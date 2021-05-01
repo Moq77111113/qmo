@@ -1,0 +1,8 @@
+{
+  "name": "QMO",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular",
+  "id": "98f75bd5"
+}
