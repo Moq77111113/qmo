@@ -3,7 +3,8 @@ import { ActivatedRoute } from '@angular/router';
 import { IonContent, IonInfiniteScroll } from '@ionic/angular';
 import { Store } from '@ngrx/store';
 import { interval, Observable } from 'rxjs';
-import { finalize, takeWhile } from 'rxjs/operators';
+import { takeWhile } from 'rxjs/operators';
+import { v4 } from 'uuid';
 import { addItem, getItem, removeItem } from '../store/actions';
 import { selectItems } from '../store/selectors';
 
@@ -49,7 +50,7 @@ export class FolderPage implements OnInit {
     this.content.scrollToBottom(1000);
   }
   add() {
-    this.store.dispatch(addItem({ itemId: (Math.random() * 100).toString(), kind: this.folder }));
+    this.store.dispatch(addItem({ itemId:v4(), kind: this.folder }));
   }
 
   remove(item: { kind: string; id: string }) {

@@ -14,7 +14,7 @@ export const itemReducer = createReducer(
     if (state.find(item => item.id === itemId)) {
       return state;
     }
-    return [...state, {id: itemId, kind}];
+    return [...state, {id: itemId, kind: kind.toLowerCase()}];
   })
 );
 export const metaReducers: MetaReducer<State>[] = !environment.production ? [] : [];

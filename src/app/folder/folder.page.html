@@ -13,7 +13,9 @@
       <ion-label class="ion-text-wrap">
         {{item.id}}
       </ion-label>
-      <ion-button slot="end" (click)="remove(item)">remove</ion-button>
+      <ion-button slot="end" (click)="remove(item)">
+        <ion-icon name="trash-outline"></ion-icon>
+      </ion-button>
     </ion-item>
   </ion-list>
   <ion-infinite-scroll threshold="100px" (ionInfinite)="fetch($event)">

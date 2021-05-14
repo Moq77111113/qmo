@@ -1,4 +1,9 @@
+/* eslint-disable ngrx/avoid-mapping-selectors */
 import { Component } from '@angular/core';
+import { Store } from '@ngrx/store';
+import { forkJoin, Observable } from 'rxjs';
+import { catchError, map, mergeMap } from 'rxjs/operators';
+import { itemCountByKind, selectItems } from './store/selectors';
 @Component({
   selector: 'app-root',
   templateUrl: 'app.component.html',
@@ -13,6 +18,8 @@ export class AppComponent {
     { title: 'Trash', url: '/folder/Trash', icon: 'trash' },
     { title: 'Spam', url: '/folder/Spam', icon: 'warning' },
   ];
-  public labels = ['Family', 'Friends', 'Notes', 'Work', 'Travel', 'Reminders'];
-  constructor() {}
+
+  constructor(private store: Store) {
+  }
+  public getCount = (kind: string) => this.store.select(itemCountByKind(kind));
 }
